@@ -1,40 +1,123 @@
-Spring Boot Machine Test – Category & Product Management
-This is a Spring Boot application developed as part of a machine test. The application implements CRUD operations for Category and Product entities, including a one-to-many relationship (One Category → Many Products). It also includes server-side pagination and uses MySQL as the database.
+# NimapMachineTest
 
-🚀 Technologies Used
-Java
-Spring Boot
-Spring Data JPA
-MySQL (RDBMS)
-RESTful Web Services
-Spring Starter project
-✅ Features
-📁 Category APIs
-GET /api/categories?page=0 – Fetch paginated list of categories
-POST /api/categories – Create a new category
-GET /api/categories/{id} – Get category by ID
-PUT /api/categories/{id} – Update category by ID
-DELETE /api/categories/{id} – Delete category by ID
-GET/api/categories/{id}- Fetch the data from id
-📦 Product APIs
-GET /api/products?page=0 – Fetch paginated list of products
-POST /api/products – Create a new product
-GET /api/products/{id} – Get product by ID (includes category details)
-PUT /api/products/{id} – Update product by ID
-DELETE /api/products/{id} – Delete product by ID
-GET/api/products/{id}- Fetch the data from id
-🔗 Entity Relationship
-One-to-Many: One Category can have multiple Products.
-While fetching a Product, the related Category details are also returned in the response.
-🗃️ Database Configuration
-Database Used: MySQL
-Update the credentials and database name in application.properties:
+A Spring Boot REST API for managing **Categories** and **Products** with a one-to-many relationship, including full CRUD operations and server-side pagination.
 
-pring.jpa.hibernate.ddl-auto=update
-spring.datasource.url=jdbc:mysql://localhost:3306/Nimapmachinetest
+---
+
+## 📦 Features
+
+- Category CRUD (Create, Read, Update, Delete)
+- Product CRUD (Create, Read, Update, Delete)
+- One-to-Many relationship between Category and Product
+- Server-side pagination for both Category and Product
+- JSON API responses
+- Uses relational database (MySQL/PostgreSQL)
+- Annotation-based configuration (No XML)
+
+---
+
+## 🚀 Technologies Used
+
+- Java 17+
+- Spring Boot
+- Spring Data JPA
+- Hibernate
+- MySQL (or any RDBMS)
+- Maven
+- Postman / Swagger for testing
+
+---
+
+## 📁 Project Structure
+
+src/
+└── main/
+├── java/
+│ └── com/programming/restapi/
+│ ├── controller/
+│ ├── entity/
+│ ├── repository/
+│ ├── service/
+│ └── serviceimplementation/
+└── resources/
+└── application.properties
+
+
+
+---
+
+## 🔗 API Endpoints
+
+### Category APIs
+| Method | Endpoint                      | Description                     |
+|--------|-------------------------------|---------------------------------|
+| POST   | `/api/categories/add`         | Create a new category           |
+| GET    | `/api/categories/all`         | Get all categories              |
+| GET    | `/api/categories/{id}`        | Get category by ID              |
+| PUT    | `/api/categories/{id}`        | Update category by ID           |
+| DELETE | `/api/categories/delete/{id}` | Delete category by ID           |
+| GET    | `/api/categories`             | Get categories (paginated)      |
+
+### Product APIs
+| Method | Endpoint                      | Description                     |
+|--------|-------------------------------|---------------------------------|
+| POST   | `/api/products/save`          | Create a new product            |
+| GET    | `/api/products/all`           | Get all products                |
+| GET    | `/api/products/{id}`          | Get product by ID               |
+| PUT    | `/api/products/{id}`          | Update product by ID            |
+| DELETE | `/api/products/{id}`          | Delete product by ID            |
+| GET    | `/api/products`               | Get products (paginated)        |
+
+---
+
+## ⚙️ Configuration
+
+### `application.properties`
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/your_db
 spring.datasource.username=root
-spring.datasource.password=root
-spring.datasource.driver-cl ass-name=com.mysql.cj.jdbc.Driver
-spring.jpa.show-sql: true
+spring.datasource.password=your_password
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 
-server.port=8080
+
+
+🧪 Testing the API
+Use Postman or Swagger to test endpoints.
+
+For paginated APIs:
+
+arduino
+Copy
+Edit
+GET /api/categories?page=0&size=5
+GET /api/products?page=1&size=10
+For adding Category:
+
+json
+Copy
+Edit
+{
+  "category_name": "Electronics"
+}
+For adding Product:
+
+json
+Copy
+Edit
+{
+  "product_name": "iPhone",
+  "product_price": 999.99,
+  "product_description": "Latest model",
+  "category": {
+    "category_id": 1
+  }
+}
+
+---
+
+You can copy and paste this content into a `README.md` file and commit it to your repo. Would you like help creating a `.gitignore` as well?
+
+
