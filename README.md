@@ -28,19 +28,6 @@ A Spring Boot REST API for managing **Categories** and **Products** with a one-t
 
 ---
 
-## 📁 Project Structure
-
-src/
-└── main/
-├── java/
-│ └── com/programming/restapi/
-│ ├── controller/
-│ ├── entity/
-│ ├── repository/
-│ ├── service/
-│ └── serviceimplementation/
-└── resources/
-└── application.properties
 
 
 
@@ -75,9 +62,9 @@ src/
 ### `application.properties`
 
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/your_db
+spring.datasource.url=jdbc:mysql://localhost:3306/NimapCompany?createDatabaseIfNotExist=true
 spring.datasource.username=root
-spring.datasource.password=your_password
+spring.datasource.password=root
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
@@ -116,8 +103,8 @@ Edit
   }
 }
 
----
 
-You can copy and paste this content into a `README.md` file and commit it to your repo. Would you like help creating a `.gitignore` as well?
+
+
 
 
